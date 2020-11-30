@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+      <div class="card card-signin">
+        <div class="card-body">
+          <h5 class="card-title text-center">Sign In</h5>
+          <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
+            <div class="form-item">
+              <input
+                type="email"
+                formControlName="email"
+                class="form-control"
+                placeholder="Email address"
+                autofocus
+              />
+              <div
+                class="error_msg"
+                *ngIf="isFormSubmitted && formControlDetails.email.invalid"
+              >
+                <div *ngIf="formControlDetails.email.errors.required">
+                  Email is required
+                </div>
+                <div *ngIf="formControlDetails.email.errors.email">
+                  Email must be a valid email address
+                </div>
+              </div>
+            </div>
+
+            <div class="form-item">
+              <input
+                type="password"
+                formControlName="password"
+                class="form-control"
+                placeholder="Password"
+              />
+              <div
+                class="error_msg"
+                *ngIf="isFormSubmitted && formControlDetails.password.invalid"
+              >
+                Password is required
+              </div>
+            </div>
+            <button class="btn btn-primary btn-block">
+              Sign in
+            </button>
+          </form>
+          <a (click)="navigateToRegistration()" class="link"
+            >Register if not have account</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
